@@ -11,6 +11,9 @@ var crystalRandNum=0;
 var compRandNum = Math.floor(Math.random() * 121) + 1;
 console.log(compRandNum);
 
+//reset function
+
+
 
 window.onload = function () {
     //this will generate a random number and then display it at #random_number
@@ -40,7 +43,6 @@ window.onload = function () {
             console.log(gemTotal + " ruby this is elseif2");
             console.log(ruby + " ruby this is elseif3");
             console.log(wins);
-
         } else {
             losses++;
             $("#losses").html("<h3>" + losses + "</h3>");

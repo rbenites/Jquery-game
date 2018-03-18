@@ -1,8 +1,39 @@
-/*
-body {    
-  background-image: url("../week-4-game/assets/images/gem_mine.jpg");
-   /* padding-top:100px;
-    background-size:cover;
-    
-  }
-  */
+body{
+    background-image: url("../images/gem_mine.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+  
+img{
+  height: 50%;
+}
+
+.thumbnail{
+  max-width: 50%;
+}
+
+#gameNameBox{
+    background-color: black;
+    color: azure;
+}
+
+#instructions{
+  background-color: black;
+  color: azure;
+}
+  
+#scoreBox{
+  background-color: black;
+  color: azure;
+}
+
+#random_number{
+  background-color: black;
+  color: azure;
+}
+
+#wins_losses{
+  background-color: black;
+  color: azure;
+}

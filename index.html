@@ -16,15 +16,15 @@
     <script src="../week-4-game/assets/javascript/game.js"></script>
 </head>
 
-<body >
+<body>
 
     <div class="row font-weight-bold">
-        <div class="col-xl-auto col-md-3">
+        <div class="col-xl-auto col-md-3" id="gameNameBox">
             <h1>Crystals Collector! </h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-xl-auto col-md-4">
+        <div class="col-xl-auto col-md-4" id="instructions">
             <p>You will be given a random number at the start of the game.
                 <br> There are four crystals below. By clicking on a crystal you will add a specific amount of points to your
                 total score.
@@ -46,45 +46,34 @@
         </div>
     </div>
 
-
-
     <div class="row">
-        <div class="col-xs-2 col-md-3">
+        <div class="col-xs-auto col-md-auto">
             <a href="#" class="thumbnail">
                 <img src="../week-4-game/assets/images/ruby.jpg" alt="..." id="ruby">
             </a>
         </div>
-        <div class="col-xs-2 col-md-3">
+        <div class="col-xs-auto col-md-auto">
             <a href="#" class="thumbnail">
                 <img src="../week-4-game/assets/images/sapphire.jpg" alt="..." id="sapphire">
             </a>
         </div>
-        <div class="col-xs-2 col-md-3">
+        <div class="col-xs-auto col-md-auto">
             <a href="#" class="thumbnail">
                 <img src="../week-4-game/assets/images/yellow_sapphire.jpg" alt="..." id="yellow_sapphire">
             </a>
         </div>
-        <div class="col-xs-2 col-md-3">
+        <div class="col-xs-auto col-md-auto">
             <a href="#" class="thumbnail">
                 <img src="../week-4-game/assets/images/emerald.jpg" alt="..." id="emerald">
             </a>
         </div>
     </div>
     <div class="row">
-        <div class="col-xl-auto col-md-3">
+        <div class="col-xl-auto col-md-auto" id="scoreBox">
             <p>Your total score is: </p>
             <span id="gemTotal"></span>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xl-auto col-md-3" id="score">
-            <h1> </h1>
-        </div>
-    </div>
-
-
-
-
 
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

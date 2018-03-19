@@ -5,13 +5,25 @@ var wins = 0, losses = 0;
 var playerTotalScore = 0;
 var ruby = 0; sapphire = 0; sapphireYellow = 0; emerald = 0;
 var gemTotal = 0;
-var crystalRandNum=0;
+var crystalRandNum = 0;
 
 //random number generator that the computer generates
 var compRandNum = Math.floor(Math.random() * 121) + 1;
 console.log(compRandNum);
 
 //reset function
+function reset() {
+    var wins = 0, losses = 0;
+    var playerTotalScore = 0;
+    var ruby = 0; sapphire = 0; sapphireYellow = 0; emerald = 0;
+    var gemTotal = 0;
+    var crystalRandNum = 0;
+
+    var compRandNum = Math.floor(Math.random() * 121) + 1;
+    $('#random_number').html("<h1>" + compRandNum + "</h1>");
+    console.log(compRandNum);
+
+}
 
 
 
@@ -21,7 +33,7 @@ window.onload = function () {
 
     //this will track when the ruby button is clicked
     $("#ruby").on("click", function () {
-        if (ruby === 0) {
+        if (ruby === 0){
             crystalRandNum = Math.floor(Math.random() * 13) + 1;
             ruby += crystalRandNum;
             gemTotal += ruby;
@@ -41,15 +53,23 @@ window.onload = function () {
             $("#wins").html("<h3>" + wins + "</h3>");
             console.log("----------------------------");
             console.log(gemTotal + " ruby this is elseif2");
-            console.log(ruby + " ruby this is elseif3");
+            console.log(ruby + " ruby this is elseif2");
             console.log(wins);
-        } else {
+            gemTotal=0;
+            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
+            ruby=0;
+            reset();
+        } else if (gemTotal > compRandNum) {
             losses++;
             $("#losses").html("<h3>" + losses + "</h3>");
             console.log("----------------------------");
             console.log(gemTotal + " ruby this is else3");
             console.log(ruby + " ruby this is else3");
             console.log(losses);
+            gemTotal=0;
+            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
+            ruby=0;
+            reset();
         }
     });
 
@@ -77,13 +97,21 @@ window.onload = function () {
             console.log(gemTotal + " sapphire this is else2");
             console.log(sapphire + " sapphire this is else2");
             console.log(wins);
-        } else {
+            gemTotal=0;
+            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
+            sapphire=0;
+            reset();
+        } else if (gemTotal > compRandNum)  {
             losses++;
             $("#losses").html("<h3>" + losses + "</h3>");
             console.log("----------------------------");
             console.log(gemTotal + " sapphire this is else3");
             console.log(sapphire + " sapphire this is else3");
             console.log(losses);
+            gemTotal=0;
+            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
+            sapphire=0;
+            reset();
         }
     });
     //this will track when the sapphireYellow button is clicked
@@ -110,13 +138,21 @@ window.onload = function () {
             console.log(gemTotal + " sapphireYellow this is else2");
             console.log(sapphireYellow + " sapphireYellow this is else2");
             console.log(wins);
-        } else {
+            gemTotal=0;
+            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
+            sapphireYellow=0;
+            reset();
+        } else if (gemTotal > compRandNum)  {
             losses++;
             $("#losses").html("<h3>" + losses + "</h3>");
             console.log("----------------------------");
             console.log(gemTotal + " sapphireYellow this is else3");
             console.log(sapphireYellow + " sapphireYellow this is else3");
             console.log(losses);
+            gemTotal=0;
+            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
+            sapphireYellow=0;
+            reset();
         }
     });
     //this will track when the emerald button is clicked
@@ -141,11 +177,19 @@ window.onload = function () {
             $("#wins").html("<h3>" + wins + "</h3>");
             console.log("----------------------------");
             console.log(wins);
-        } else {
+            gemTotal=0;
+            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
+            emerald=0;
+            reset();
+        } else if (gemTotal > compRandNum)  {
             losses++;
             $("#losses").html("<h3>" + losses + "</h3>");
             console.log("----------------------------");
             console.log(losses);
+            gemTotal=0;
+            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
+            emerald=0;
+            reset();
         }
     });
 

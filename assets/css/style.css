@@ -3,6 +3,7 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
 }
+
   
 img{
   height: 50%;
@@ -31,4 +32,14 @@ img{
 #wins_losses{
   background-color: black;
   color: azure;
+}
+
+#scoreBox{
+  bottom: 50px;
+}
+
+footer{
+  background-color: black;
+  color: azure;
+  height: 44px;
 }

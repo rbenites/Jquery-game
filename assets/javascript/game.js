@@ -1,196 +1,139 @@
 /*jshint esversion: 6 */
-
-//Global variables
-var wins = 0, losses = 0;
-var playerTotalScore = 0;
-var ruby = 0; sapphire = 0; sapphireYellow = 0; emerald = 0;
-var gemTotal = 0;
-var crystalRandNum = 0;
-
-//random number generator that the computer generates
-var compRandNum = Math.floor(Math.random() * 121) + 1;
-console.log(compRandNum);
-
-//reset function
-function reset() {
-    var wins = 0, losses = 0;
-    var playerTotalScore = 0;
-    var ruby = 0; sapphire = 0; sapphireYellow = 0; emerald = 0;
-    var gemTotal = 0;
-    var crystalRandNum = 0;
-
-    var compRandNum = Math.floor(Math.random() * 121) + 1;
-    $('#random_number').html("<h1>" + compRandNum + "</h1>");
-    console.log(compRandNum);
-
-}
-
-
-
 window.onload = function () {
-    //this will generate a random number and then display it at #random_number
-    $('#random_number').html("<h1>" + compRandNum + "</h1>");
+    //Global variables
+    var compRandNum;
+    var wins = 0;
+    var losses = 0;
+    var gemTotal = 0;
+    var ruby;
+    var sapphire;
+    var sapphireYellow;
+    var emerald;
+    let rubyFirstClick = true;
+    let sapphireFirstClick = true;
+    let yellow_sapphireFirstClick = true;
+    let emeraldFirstClick = true;
 
-    //this will track when the ruby button is clicked
-    $("#ruby").on("click", function () {
-        if (ruby === 0){
-            crystalRandNum = Math.floor(Math.random() * 13) + 1;
-            ruby += crystalRandNum;
+    $('#ruby').on('click', rubyClick);
+    $('#sapphire').on('click', sapphireClick);
+    $('#yellow_sapphire').on('click', yellow_sapphireClick);
+    $('#emerald').on('click', emeraldClick);
+
+    compNum();
+
+    function rubyClick() {
+        if (rubyFirstClick === true) {
+            ruby = Math.floor(Math.random() * 13) + 1;
+            rubyFirstClick = false;
             gemTotal += ruby;
             $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
-            console.log("----------------------------");
-            console.log(gemTotal + " ruby gemtotal");
-            console.log(crystalRandNum + " ruby crystal");
-            console.log(ruby + " ruby");
-        } else if (gemTotal < compRandNum) {
+            console.log(ruby+" rubyClick");
+            win();
+            lose();
+        } else {
             gemTotal += ruby;
             $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
-            console.log("----------------------------");
-            console.log(gemTotal + " ruby this is elseif1");
-            console.log(ruby + " ruby this is elseif1");
-        } else if (gemTotal === compRandNum) {
-            wins++;
-            $("#wins").html("<h3>" + wins + "</h3>");
-            console.log("----------------------------");
-            console.log(gemTotal + " ruby this is elseif2");
-            console.log(ruby + " ruby this is elseif2");
-            console.log(wins);
-            gemTotal=0;
-            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
-            ruby=0;
-            reset();
-        } else if (gemTotal > compRandNum) {
-            losses++;
-            $("#losses").html("<h3>" + losses + "</h3>");
-            console.log("----------------------------");
-            console.log(gemTotal + " ruby this is else3");
-            console.log(ruby + " ruby this is else3");
-            console.log(losses);
-            gemTotal=0;
-            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
-            ruby=0;
-            reset();
+            console.log(ruby+" else");
+            win();
+            lose();
         }
-    });
+    }
 
-    //this will track when the sapphire button is clicked
-    $("#sapphire").on("click", function () {
-        if (sapphire === 0) {
-            crystalRandNum = Math.floor(Math.random() * 13) + 1;
-            sapphire += crystalRandNum;
+    function sapphireClick() {
+        if (sapphireFirstClick === true) {
+            sapphire = Math.floor(Math.random() * 13) + 1;
+            sapphireFirstClick = false;
             gemTotal += sapphire;
             $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
-            console.log("----------------------------");
-            console.log(gemTotal + " sapphire gemtotal");
-            console.log(crystalRandNum + " sapphire crystal");
-            console.log(sapphire + " sapphire");
-        } else if (gemTotal < compRandNum) {
+            console.log(sapphire+" sapphireClick");
+            win();
+            lose();
+        } else {
             gemTotal += sapphire;
             $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
-            console.log("----------------------------");
-            console.log(gemTotal + " sapphire this is else1");
-            console.log(sapphire + " sapphire this is else1");
-        } else if (gemTotal === compRandNum) {
-            wins++;
-            $("#wins").html("<h3>" + wins + "</h3>");
-            console.log("----------------------------");
-            console.log(gemTotal + " sapphire this is else2");
-            console.log(sapphire + " sapphire this is else2");
-            console.log(wins);
-            gemTotal=0;
-            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
-            sapphire=0;
-            reset();
-        } else if (gemTotal > compRandNum)  {
-            losses++;
-            $("#losses").html("<h3>" + losses + "</h3>");
-            console.log("----------------------------");
-            console.log(gemTotal + " sapphire this is else3");
-            console.log(sapphire + " sapphire this is else3");
-            console.log(losses);
-            gemTotal=0;
-            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
-            sapphire=0;
-            reset();
+            console.log(sapphire+" else");
+            win();
+            lose();
         }
-    });
-    //this will track when the sapphireYellow button is clicked
-    $("#yellow_sapphire").on("click", function () {
-        if (sapphireYellow === 0) {
-            crystalRandNum = Math.floor(Math.random() * 13) + 1;
-            sapphireYellow += crystalRandNum;
-            gemTotal += sapphireYellow;
-            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
-            console.log("----------------------------");
-            console.log(gemTotal + " sapphireYellow gemtotal");
-            console.log(crystalRandNum + " sapphireYellow crystal");
-            console.log(sapphireYellow + " sapphireYellow yellow_sapphire");
-        } else if (gemTotal < compRandNum) {
-            gemTotal += sapphireYellow;
-            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
-            console.log("----------------------------");
-            console.log(gemTotal + " sapphireYellow this is else1");
-            console.log(sapphireYellow + " sapphireYellow this is else1");
-        } else if (gemTotal === compRandNum) {
-            wins++;
-            $("#wins").html("<h3>" + wins + "</h3>");
-            console.log("----------------------------");
-            console.log(gemTotal + " sapphireYellow this is else2");
-            console.log(sapphireYellow + " sapphireYellow this is else2");
-            console.log(wins);
-            gemTotal=0;
-            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
-            sapphireYellow=0;
-            reset();
-        } else if (gemTotal > compRandNum)  {
-            losses++;
-            $("#losses").html("<h3>" + losses + "</h3>");
-            console.log("----------------------------");
-            console.log(gemTotal + " sapphireYellow this is else3");
-            console.log(sapphireYellow + " sapphireYellow this is else3");
-            console.log(losses);
-            gemTotal=0;
-            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
-            sapphireYellow=0;
-            reset();
-        }
-    });
-    //this will track when the emerald button is clicked
-    $("#emerald").on("click", function () {
-        if (emerald === 0) {
-            crystalRandNum = Math.floor(Math.random() * 13) + 1;
-            emerald += crystalRandNum;
-            gemTotal += emerald;
-            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
-            console.log("----------------------------");
-            console.log(gemTotal + " gemtotal");
-            console.log(crystalRandNum + " crystal");
-            console.log(emerald + " emerald");
-        } else if (gemTotal < compRandNum) {
-            gemTotal += emerald;
-            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
-            console.log("----------------------------");
-            console.log(gemTotal + " this is else");
-            console.log(emerald + " this is else");
-        } else if (gemTotal === compRandNum) {
-            wins++;
-            $("#wins").html("<h3>" + wins + "</h3>");
-            console.log("----------------------------");
-            console.log(wins);
-            gemTotal=0;
-            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
-            emerald=0;
-            reset();
-        } else if (gemTotal > compRandNum)  {
-            losses++;
-            $("#losses").html("<h3>" + losses + "</h3>");
-            console.log("----------------------------");
-            console.log(losses);
-            gemTotal=0;
-            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
-            emerald=0;
-            reset();
-        }
-    });
+    }
 
+    function yellow_sapphireClick() {
+        if (yellow_sapphireFirstClick === true) {
+            sapphireYellow = Math.floor(Math.random() * 13) + 1;
+            yellow_sapphireFirstClick = false;
+            gemTotal += sapphireYellow;
+            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
+            console.log(sapphireYellow+" sapphirYelloweFirstClick");
+            win();
+            lose();
+        } else {
+            gemTotal += sapphireYellow;
+            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
+            console.log(sapphireYellow+" else");
+            win();
+            lose();
+        }
+    }
+
+    function emeraldClick() {
+        if (emeraldFirstClick === true) {
+            emerald = Math.floor(Math.random() * 13) + 1;
+            emeraldFirstClick = false;
+            gemTotal += emerald;
+            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
+            console.log(emerald+" emeraldClick");
+            win();
+            lose();
+        } else {
+            gemTotal += emerald;
+            $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
+            console.log(emerald+" else");
+            win();
+            lose();
+        }
+    }
+
+//Functions to be resude by the crystal functions
+    function compNum() {
+        //this will generate a random number and then display it at #random_number
+        compRandNum = Math.floor(Math.random() * 121) + 26;
+        $('#random_number').html("<h1>" + compRandNum + "</h1>");
+        console.log(compRandNum + " function");
+    }
+    function reset() {
+        //this will reset the computers number and display it
+        var compRandNum = Math.floor(Math.random() * 121) + 26;
+        $('#random_number').html("<h1>" + compRandNum + "</h1>");
+        //this will reset the gem total to 0 and display it
+        gemTotal = 0;
+        $("#gemTotal").html("<h1>" + gemTotal + "</h1>");
+        //this resets the ruby first click boolean
+        rubyFirstClick = false;
+        console.log("reset");
+    }
+
+    function win() {
+        if (gemTotal == compRandNum) {
+            //add to win counter and disaply
+            wins++;
+            $("#wins").html("<h3>" + wins + "</h3>");
+            console.log(gemTotal + " win");
+            console.log(compRandNum + " win");
+            //call reset and comp randum number functions
+            reset();
+            compNum();
+        }
+    }
+    function lose() {
+        if (gemTotal > compRandNum) {
+            //adds to losses counter and displays it
+            losses++;
+            $("#losses").html("<h3>" + losses + "</h3>");
+            console.log(gemTotal + " lose");
+            console.log(compRandNum + " lose");
+            //call reset and comp randum number functions
+            reset();
+            compNum();
+        }
+    }
 };
